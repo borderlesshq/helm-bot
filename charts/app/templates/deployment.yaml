@@ -6,7 +6,7 @@ metadata:
   annotations:
     "deliverybot.dev/secret-checksum": {{ toJson .Values.secrets | sha256sum }}
   labels:
-{{ include "app.labels" . | indent 4 }}
+    app: borderless
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -14,7 +14,10 @@ spec:
 {{ include "app.matchLabels" . | indent 6 }}
   template:
     metadata:
+      annotations:
+        akeyless/enabled: "true"
       labels:
+        app: borderless
 {{ include "app.matchLabels" . | indent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
@@ -24,12 +27,13 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-            - secretRef:
-                name: {{ include "app.fullname" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}          
         {{ with .Values.env }}
           env:
+          - name: AKEYLESS_ACCESS_ID
+            value: akeyless:/cd_production/AKEYLESS_ACCESS_ID
+          - name: AKEYLESS_ACCESS_KEY
+            value: akeyless:/cd_production/AKEYLESS_ACCESS_KEY
             {{- toYaml . | nindent 12 }}
         {{- end }}
           ports:
