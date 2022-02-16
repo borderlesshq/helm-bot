@@ -182,7 +182,7 @@ async function run() {
       })
       v["env"].push({
         name: "ENVIRONMENT",
-        value: String(aKeylessCredentialsPath).toUpperCase()
+        value: aKeylessCredentialsPath
       })
     }else {
         v.env = [
@@ -190,7 +190,7 @@ async function run() {
             { name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`},
           {
             name: "ENVIRONMENT",
-            value: String(aKeylessCredentialsPath).toUpperCase()
+            value: aKeylessCredentialsPath
           }
         ]
     }
