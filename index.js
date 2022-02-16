@@ -168,6 +168,7 @@ async function run() {
       if (f.includes("workflows")){
         aKeylessCredentialsPath = String(f.split("/")[3]).split(".yml")[0] || ""
       }
+      return f
     })
 
     console.log("[Environment] =>", aKeylessCredentialsPath)
@@ -175,11 +176,22 @@ async function run() {
     let v = JSON.parse(values)
     if (values.hasOwnProperty("env")){
       v["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
-      v["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`})
+      v["env"].push({
+        name: "AKEYLESS_ACCESS_KEY",
+        value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`
+      })
+      v["env"].push({
+        name: "ENVIRONMENT",
+        value: String(aKeylessCredentialsPath).toUpperCase()
+      })
     }else {
         v.env = [
             { name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`},
-            { name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`}
+            { name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`},
+          {
+            name: "ENVIRONMENT",
+            value: String(aKeylessCredentialsPath).toUpperCase()
+          }
         ]
     }
     values = JSON.stringify(v)
