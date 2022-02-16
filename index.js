@@ -170,6 +170,7 @@ async function run() {
       }
     })
 
+    console.log("[Environment] =>", aKeylessCredentialsPath)
     const values = getValues(getInput("values"));
     if (values.hasOwnProperty("env")){
       values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
