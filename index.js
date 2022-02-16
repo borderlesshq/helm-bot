@@ -175,6 +175,13 @@ async function run() {
     if (values.hasOwnProperty("env")){
       values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
       values["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`})
+    }else {
+        Object.assign(values, {
+            env: [
+                { name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`},
+                { name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`}
+            ]
+        })
     }
 
     console.log(values, " Values bro.")
