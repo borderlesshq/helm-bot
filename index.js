@@ -171,17 +171,18 @@ async function run() {
     })
 
     console.log("[Environment] =>", aKeylessCredentialsPath)
-    const values = getValues(getInput("values"));
+    let values = getValues(getInput("values"));
+    let v = JSON.parse(values)
     if (values.hasOwnProperty("env")){
-      values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
-      values["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`})
+      v["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
+      v["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`})
     }else {
-        values.env = [
+        v.env = [
             { name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`},
             { name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`}
         ]
     }
-
+    values = JSON.stringify(v)
     console.log(values, " Values bro.")
     const task = getInput("task");
     const version = getInput("version");
