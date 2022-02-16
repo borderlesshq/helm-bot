@@ -160,6 +160,10 @@ async function run() {
     const chart = chartName(getInput("chart", required));
     const chartVersion = getInput("chart_version");
     const values = getValues(getInput("values"));
+    if (values.hasOwnProperty("env")){
+      values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: "akeyless:/cd_production/AKEYLESS_ACCESS_ID"})
+      values["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: "akeyless:/cd_production/AKEYLESS_ACCESS_KEY"})
+    }
     const task = getInput("task");
     const version = getInput("version");
     const valueFiles = getValueFiles(getInput("value_files"));

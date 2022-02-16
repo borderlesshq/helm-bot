@@ -31,10 +31,10 @@ spec:
         {{ with .Values.env }}
           env:
            {{- toYaml . | nindent 12 }}
-          - name: AKEYLESS_ACCESS_ID
-            value: "akeyless:/cd_production/AKEYLESS_ACCESS_ID"
-          - name: AKEYLESS_ACCESS_KEY
-            value: "akeyless:/cd_production/AKEYLESS_ACCESS_KEY"           
+          #- name: AKEYLESS_ACCESS_ID
+          #  value: "akeyless:/cd_production/AKEYLESS_ACCESS_ID"
+          #- name: AKEYLESS_ACCESS_KEY
+          #  value: "akeyless:/cd_production/AKEYLESS_ACCESS_KEY"
         {{- end }}
           ports:
             - name: http
