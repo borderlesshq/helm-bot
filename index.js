@@ -176,6 +176,8 @@ async function run() {
       values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
       values["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_KEY`})
     }
+
+    console.log(values, " Values bro.")
     const task = getInput("task");
     const version = getInput("version");
     const removeCanary = getInput("remove_canary");
