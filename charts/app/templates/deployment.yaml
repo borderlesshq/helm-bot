@@ -29,7 +29,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}    
           command:
-            - "echo $AKEYLESS_ACCESS_ID"
+            - "$0"
         {{ with .Values.env }}
           env:
            {{- toYaml . | nindent 12 }}
