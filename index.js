@@ -159,14 +159,24 @@ async function run() {
     const namespace = getInput("namespace", required);
     const chart = chartName(getInput("chart", required));
     const chartVersion = getInput("chart_version");
+    const valueFiles = getValueFiles(getInput("value_files"));
+
+    let aKeylessCredentialsPath = ""
+    valueFiles.forEach(f => {
+      // Use this to read the value file...
+      // Any file that looks like this.. '.github/workflows/delivery/staging.yml', extract the branch from the end...
+      if (f.includes("workflows")){
+        aKeylessCredentialsPath = String(f.split("/")[3]).split(".yml")[0] || ""
+      }
+    })
+
     const values = getValues(getInput("values"));
     if (values.hasOwnProperty("env")){
-      values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: "akeyless:/cd_production/AKEYLESS_ACCESS_ID"})
-      values["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: "akeyless:/cd_production/AKEYLESS_ACCESS_KEY"})
+      values["env"].push({ name: "AKEYLESS_ACCESS_ID", value: `akeyless:/cd_${aKeylessCredentialsPath}/AKEYLESS_ACCESS_ID`})
+      values["env"].push({ name: "AKEYLESS_ACCESS_KEY", value: `akeyless:/cd_${aKeylessCredentialsPath}AKEYLESS_ACCESS_KEY`})
     }
     const task = getInput("task");
     const version = getInput("version");
-    const valueFiles = getValueFiles(getInput("value_files"));
     const removeCanary = getInput("remove_canary");
     const helm = getInput("helm") || "helm";
     const timeout = getInput("timeout");
