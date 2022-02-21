@@ -27,9 +27,7 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}    
-          command:
-            - "$0"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
         {{ with .Values.env }}
           env:
            {{- toYaml . | nindent 12 }}
