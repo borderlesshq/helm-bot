@@ -28,6 +28,8 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - "./borderless.app"
         {{ with .Values.env }}
           env:
            {{- toYaml . | nindent 12 }}
