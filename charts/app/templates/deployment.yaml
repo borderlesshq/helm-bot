@@ -29,7 +29,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - "./borderless.app"
+            - "sh"
+            - "-c"
+            - "echo $AKEYLESS_ACCESS_ID && echo $AKEYLESS_ACCESS_KEY && ./borderless.app"
+            #- "./borderless.app"
         {{ with .Values.env }}
           env:
            {{- toYaml . | nindent 12 }}
