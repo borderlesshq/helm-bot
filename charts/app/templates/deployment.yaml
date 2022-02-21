@@ -27,7 +27,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - secretRef:
-                name: {{ include "app.fullname" . }}
+                name: {{ .Values.local_secret }}
         {{ with .Values.env }}
           env:
             {{- toYaml . | nindent 12 }}

@@ -27,6 +27,8 @@ service:
   # service.internalPort -- Deployment internal port.
   internalPort: 80
 
+local_secret: null
+
 ingress:
   # ingress.enabled -- Enable ingress resource.
   enabled: false

@@ -12,7 +12,6 @@ RUN apk add --no-cache ca-certificates \
     mv linux-amd64/helm /usr/bin/helm3 && \
     chmod +x /usr/bin/helm3 && \
     rm -rf linux-amd64
-   
 
 COPY . /usr/src/
 ENTRYPOINT ["node", "/usr/src/index.js"]
