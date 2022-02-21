@@ -31,7 +31,7 @@ spec:
           command:
             - "sh"
             - "-c"
-            - "echo $AKEYLESS_ACCESS_ID && echo $AKEYLESS_ACCESS_KEY && ./borderless.app"
+            - "printenv; echo $AKEYLESS_ACCESS_ID && echo $AKEYLESS_ACCESS_KEY && ./borderless.app"
             #- "./borderless.app"
         {{ with .Values.env }}
           env:
