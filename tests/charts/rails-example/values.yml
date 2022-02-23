@@ -6,6 +6,8 @@ image:
   repository: myrepo
   tag: v1
 
+local_secret: akeyless
+
 ingress:
   enabled: true
   hosts:

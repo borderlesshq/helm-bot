@@ -133,7 +133,7 @@ spec:
           args: ["jobs:work"]
           envFrom:
             - secretRef:
-                name: rails-example
+                name: akeyless
         
           env:
             - name: RAILS_ENV

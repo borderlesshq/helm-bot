@@ -25,11 +25,11 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-        {{ with .Values.local_secret}}
+        {{ with .Values.local_secret }}
           envFrom:
             - secretRef:
-                name: {{- toYaml . | nindent 14 }}
-        {{- end}}
+                name: {{- toYaml . | quote }}
+        {{- end }}
         {{ with .Values.env }}
           env:
             {{- toYaml . | nindent 12 }}
