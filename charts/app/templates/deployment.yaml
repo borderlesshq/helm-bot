@@ -28,7 +28,7 @@ spec:
         {{ with .Values.local_secret }}
           envFrom:
             - secretRef:
-                name: {{- toYaml . | quote }}
+                name: {{ toYaml . }}
         {{- end }}
         {{ with .Values.env }}
           env:
