@@ -1,5 +1,5 @@
 # replicaCount -- Replica count for deployments.
-replicaCount: 1
+replicaCount: 4
 
 app:
   # app.name -- Application name: Can be consistent between tracks. (required)
