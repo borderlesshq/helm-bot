@@ -12,7 +12,7 @@ image:
   repository: nginx
   # image.tag -- Docker image tag.
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 # imagePullSecrets -- Defines secrets to use for pulling docker images.
 imagePullSecrets: []

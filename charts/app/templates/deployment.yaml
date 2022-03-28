@@ -19,6 +19,7 @@ spec:
   template:
     metadata:
       labels:
+        date: "{{ now | unixEpoch }}"
 {{ include "app.matchLabels" . | indent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
