@@ -1,0 +1,26 @@
+[
+  {
+    "pickupId": "pickup1",
+    "packageId": "package1",
+    "name": "LG Speaker",
+    "quantity": 3
+  },
+  {
+    "pickupId": "pickup2",
+    "packageId": "package1",
+    "name": "LG Speaker",
+    "quantity": 3
+  },
+  {
+    "pickupId": "pickup1",
+    "packageId": "package1",
+    "name": "Wire Bundle",
+    "quantity": 3
+  },
+  {
+    "pickupId": "pickup1",
+    "packageId": "package1",
+    "name": "DJ Stand and Table",
+    "quantity": 3
+  }
+]
