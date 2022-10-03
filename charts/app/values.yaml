@@ -81,17 +81,17 @@ secrets: []
 # - name: TEST
 #   value: "foobar"
 
-# livenessProbe -- Customize the livenessProbe.
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-
+## livenessProbe -- Customize the livenessProbe.
+#livenessProbe:
+#  httpGet:
+#    path: /
+#    port: http
+#
 # readinessProbe -- Customize the readiness probe.
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+#readinessProbe:
+#  httpGet:
+#    path: /
+#    port: http
 
 migrate:
   # migrate.enabled -- Run a pod before the application is released to migrate.
