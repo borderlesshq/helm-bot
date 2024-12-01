@@ -9,7 +9,7 @@ metadata:
 {{ include "app.labels" . | indent 4 }}
 spec:
 {{if eq .Release.Namespace "production" }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: 3
 {{ else }}
   replicas: 1
 {{- end }}
