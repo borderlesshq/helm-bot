@@ -55,11 +55,11 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   requests:
-    cpu: 10m
-    memory: 28Mi
+    cpu: null
+    memory: null
   limits:
-    cpu: 20m
-    memory: 32Mi
+    cpu: null
+    memory: null
 
 # nodeSelector -- Kubernetes node selectors for Deployment resources.
 nodeSelector: { }
