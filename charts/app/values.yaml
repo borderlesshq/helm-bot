@@ -15,7 +15,7 @@ image:
   pullPolicy: Always
 
 # imagePullSecrets -- Defines secrets to use for pulling docker images.
-imagePullSecrets: []
+imagePullSecrets: [ ]
 
 service:
   # service.enabled -- Enable service resource.
@@ -33,17 +33,17 @@ ingress:
   # ingress.enabled -- Enable ingress resource.
   enabled: false
   # ingress.annotations -- Configures annotations for the ingress.
-  annotations: {}
+  annotations: { }
     # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  # kubernetes.io/tls-acme: "true"
   hosts:
     # ingress.hosts[0].host -- Host name for routing traffic.
     - host: chart-example.local
       # ingress.hosts[0].paths -- Array of routable paths.
-      paths: ["/"]
+      paths: [ "/" ]
 
   # ingress.tls -- Kubernetes ingress tls resource.
-  tls: []
+  tls: [ ]
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
@@ -54,30 +54,30 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-   limits:
-     cpu: 100m
-     memory: 128Mi
-   requests:
-     cpu: 100m
-     memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 28Mi
+  limits:
+    cpu: 20m
+    memory: 32Mi
 
 # nodeSelector -- Kubernetes node selectors for Deployment resources.
-nodeSelector: {}
+nodeSelector: { }
 
 # tolerations -- Kubernetes tolerations for Deployment resources.
-tolerations: []
+tolerations: [ ]
 
 # affinity -- Kubernetes affinity resource.
-affinity: {}
+affinity: { }
 
 # env -- Environment variables for the application.
-env: []
+env: [ ]
 # - name: ENVIRONMENT
 #   value: production
 
 # secrets -- Creates a secret for the application. All variables passed in env.
 # Uses envFrom in the deployment specification to pass these all through.
-secrets: []
+secrets: [ ]
 # - name: TEST
 #   value: "foobar"
 
@@ -100,7 +100,7 @@ migrate:
   command: "rails db:migrate"
 
 # workers -- Deploy background jobs with the same config as the main app.
-workers: []
+workers: [ ]
 #  - name: delayed-job
 #    command: ["rails", "jobs:work"]
 #    enableProbes: true
